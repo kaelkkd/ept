@@ -14,7 +14,7 @@ def registerView(request):
             newUser = authenticate(username=form.cleaned_data['email'], password=form.cleaned_data['password1'])
             login(request, newUser)
 
-            return redirect("core:index")
+            return redirect("manager:index")
     else:
         form = UserRegisterForm()
     
@@ -26,7 +26,7 @@ def registerView(request):
 
 def loginView(request):
     if request.user.is_authenticated:
-        return redirect("core:index")
+        return redirect("manager:index")
     
     if request.method == "POST":
         email = request.POST.get("email")
