@@ -1,5 +1,190 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins');
 
+/*landing page*/
+*{
+    margin: 0;
+    padding: 0;
+}
+
+:root{
+    --white: #fff;
+    --dark: #34344e;
+    --dark2: #3a415a;
+    --dark3: #566981;
+    --dark4: #89a7b1;
+    --dark5: #cbdad5;
+    --dark6: #2f2f46;
+    --cyan1: #70e3ea;
+}
+
+body.landing {
+    background-color: var(--dark);
+    height: 100vh;
+    background-size: 400%;
+    font-family: 'Poppins';
+}
+
+header.landing {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+    padding: .8rem;
+    background-color: var(--dark6);
+    min-height: 50px;
+}
+
+.box-img-header.landing {
+    height: 100%;
+}
+
+.img-logo.landing {
+    max-width: 70px;
+    height: 100%;
+}
+
+nav.landing {
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.nav-links.landing {
+    text-decoration: none;
+    color: var(--white);
+}
+
+.nav-links.landing:hover {
+    color: var(--dark4);
+    transition: .4s;
+    text-decoration: underline;
+}
+
+.box-btn-actions.landing {
+    display: flex;
+    gap: 1rem;
+}
+
+:is(button.landing, .link-action.landing) {
+    padding: .6rem;
+    font-size: .9rem;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: .4s;
+}
+
+.btn-action.landing {
+    background-color: transparent;
+    border: 1px solid var(--white);
+    color: var(--white);
+}
+
+.btn-action.landing:hover {
+    background-color: var(--dark3);
+    border: 1px solid var(--dark3);
+}
+
+.link-action.landing {
+    text-decoration: none;
+    width: 200px;
+    text-align: center;
+}
+
+main.landing {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+section.landing {
+    padding: 4rem;
+}
+
+.first-section.landing {
+    display: flex;
+    justify-content: space-evenly;
+    gap: 2rem;
+    flex-wrap: wrap;
+    align-items: center;
+    min-height: 650px;
+}
+
+.first-section.landing > div {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    min-width: 300px;
+}
+
+h1.landing {
+    font-size: 4rem;
+    color: var(--white);
+    letter-spacing: 8px;
+}
+
+strong.landing {
+    color: var(--cyan1);
+}
+
+.first-section.landing p {
+    color: var(--white);
+}
+
+.box-img-main.landing {
+    max-width: 450px;
+    padding: 1rem;
+}
+
+.second-section.landing {
+    background-color: var(--dark2);
+    gap: 2rem;
+    justify-content: center;
+    padding: 4rem;
+}
+
+.title.landing {
+    color: var(--dark5);
+}
+
+.third-section.landing {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    justify-content: center;
+    text-align: justify;
+    padding: 4rem;
+}
+
+.second-section.landing p, .third-section.landing p {
+    text-align: justify;
+    color: var(--white);
+}
+
+.second-section.landing h2, .third-section.landing h2 {
+    margin-bottom: 1rem;
+}
+
+footer.landing {
+    padding: 4rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    background-color: var(--dark2);
+}
+
+footer.landing > div {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+}
+
+
+/*
 *{
     margin: 0;
     padding: 0;
@@ -208,3 +393,4 @@ body{
 .container.active .toggle-right{
     transform: translateX(200%);
 }
+*/
