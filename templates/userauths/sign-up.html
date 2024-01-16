@@ -21,6 +21,7 @@
                 <form class="container-form" method="post" method="POST">
                     {% csrf_token %}
                     <h1>Create Account</h1>
+                    <br>
                     {{form.username}}
                     {{form.email}}
                     {{form.password1}}
