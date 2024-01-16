@@ -2,7 +2,10 @@ from django.shortcuts import render, redirect
 from userauths.forms import UserRegisterForm
 from django.contrib import messages
 from django.contrib.auth import login, authenticate
+from django.conf import settings
 # Create your views here.
+
+User = settings.AUTH_USER_MODEL
 
 def registerView(request):
     if request.method == "POST":
@@ -32,4 +35,17 @@ def loginView(request):
         email = request.POST.get("email")
         password = request.POST.get("password")
         
+        try:
+            user = user.objects.get(email=email)
+        except:
+            messages.warning(request, f"User {email} does not exist.")
 
+        user = authenticate(request, email=email, password=password)
+
+        if user is not None:
+            login(request, user)
+            messages.success(request, "You are now logged in.")
+        else:
+            messages.warning(request, "The user does not exist.")
+
+    return render(request, "userauths/sign-in.html")#editar
