@@ -1,5 +1,5 @@
 {% load static %}
-{% block%}
+{% block content %}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -21,8 +21,12 @@
             <a href="#contact" class="nav-links landing">Contacts</a>
         </nav>
         <div class="box-btn-actions landing">
-            <button class="btn-action landing">Register</button>
-            <button class="btn-action landing">Login</button>
+            <a href="{% url "userauths:sign-up" %}">
+                <button class="btn-action landing">Register</button>
+            </a>
+            <a href="{% url "userauths:sign-in" %}">
+                <button class="btn-action landing">Login</button>
+            </a>
         </div>
     </header>
 
@@ -31,7 +35,7 @@
             <div class="landing">
                 <h1 class="landing">Welcome to <br> <strong class="landing">EPT</strong> </h1>
                 <p class="landing">The web app that will help you with your <strong class="landing">savings</strong> and future plans.</p>
-                <a class="btn-action link-action landing" href="#contact">Learn more</a>
+                <a class="btn-action link-action landing" href="#info">Learn more</a>
             </div>
             <div class="box-img-main landing">
                 <img class="img-main landing" src="{% static 'assets\imgs\main-img.png' %}" alt="Main IMG">
@@ -92,3 +96,4 @@
     <script src="{% static 'assets\js\script.js' %}"></script>
 </body>
 </html>
+{% endblock content %}

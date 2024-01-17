@@ -17,10 +17,10 @@
                     {% csrf_token %}
                     <h1>Login</h1>
                     <br>
-                    <input type="email" placeholder="Email">
-                    <input type="password" placeholder="Password">
-                    <p>Don't have an account? <a href="#"><strong class="register">Sign up</strong> now.</a></p>
-                    <button type="submit">Sign Up</button>
+                    <input required type="email" placeholder="Email">
+                    <input required type="password" placeholder="Password">
+                    <p>Don't have an account? <a href="{% url "userauths:sign-up" %}"><strong class="register">Sign up</strong> now.</a></p>
+                    <button type="submit">Sign in</button>
                 </form>
             </div>
         </div>
