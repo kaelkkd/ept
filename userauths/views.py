@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from userauths.forms import UserRegisterForm
 from django.contrib import messages
-from django.contrib.auth import login, authenticate
+from django.contrib.auth import login, authenticate, logout
 from django.conf import settings
 # Create your views here.
 
@@ -49,3 +49,8 @@ def loginView(request):
             messages.warning(request, "The user does not exist.")
 
     return render(request, "userauths/sign-in.html")#editar
+
+def logoutView(request):
+    logout(request)
+    messages.success(request, f"Sucessfully logged out.")
+    return redirect("userauths:sign-in")
