@@ -1,0 +1,69 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head class="dashboard">
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Dashboard</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="{% static 'assets\css\style.css' %}">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    </head>
+    <body class="dashboard">
+        <div class="sidebar dashboard">
+            <div class="logo dashboard"></div>
+            <ul class="menu dashboard">
+                <li class="active dashboard">
+                    <a href="#">
+                        <span class="fas fa-tachometer-alt icon"></span>
+                        <span>Dashboard</span>
+                    </a>
+                </li>
+                <li class="dashboard">
+                    <a href="#">
+                        <span class="fas fa-user icon"></span>
+                        <span>Profile</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <span class="fas fa-chart-bar icon"></span>
+                        <span>Statistics</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <span class="fas fa-briefcase icon"></span>
+                        <span>Careers</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <span class="fas fa-question-circle icon"></span>
+                        <span>FAQ</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <span class="fas fa-star icon"></span>
+                        <span>Testimonials</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <span class="fas fa-cog icon"></span>
+                        <span>Settings</span>
+                    </a>
+                </li>
+                <li id="lgo">
+                    <a class="logout dashboard" href="#">
+                        <span class="fas fa-sign-out-alt"></span>
+                        <span>Logout</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <script src="" async defer></script>
+    </body>
+</html>

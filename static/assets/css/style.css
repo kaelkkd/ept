@@ -284,3 +284,83 @@ strong.register{
     justify-content: center;
     flex-direction: column;
 }
+
+/* dashboard */
+
+body.dashboard {
+    display: flex;
+}
+
+.sidebar.dashboard{
+    position: sticky;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 115px;
+    height: 100vh;
+    padding: 0 1.3rem; /*1.5 */
+    color: #fff;
+    overflow: hidden;
+    transition: all 0.3s linear;
+    background: rgba(113, 99, 186, 255);
+}
+
+.sidebar.dashboard:hover{
+    width: 240px;
+    transition: 0.3s;
+}
+
+.logo.dashboard{
+    height: 80px;
+    padding: 16px;
+}
+
+.menu.dashboard{
+    height: 88%;
+    position: relative;
+    list-style: none;
+    padding: 0;
+}
+
+.menu.dashboard li{
+    padding: 1rem;
+    margin: 8px 0;
+    border-radius: 8px;
+    transition: all 0.5s ease-in-out;
+}
+
+.menu.dashboard li:hover, .active{
+    background: #e0e0e058;
+}
+
+.menu.dashboard a{
+    color: #fff;
+    font-size: 14px;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.menu.dashboard.icon a span{
+    overflow: hidden;
+} 
+
+.menu.dashboard a span {
+    font-size: 1.2rem;
+}
+
+.logout.dashboard{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    margin: 8px 0;
+    width: 100%;
+    padding: 1rem;
+    border-radius: 8px;
+    transition: background 0.5s ease-in-out;
+}
+
+.logout.dashboard:hover{
+    background: #e0e0e058;
+}
