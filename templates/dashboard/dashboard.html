@@ -1,4 +1,5 @@
 {% load static %}
+
 <!DOCTYPE html>
 <html>
     <head class="dashboard">
@@ -7,63 +8,85 @@
         <title>Dashboard</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
         <link rel="stylesheet" href="{% static 'assets\css\style.css' %}">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     </head>
     <body class="dashboard">
-        <div class="sidebar dashboard">
-            <div class="logo dashboard"></div>
-            <ul class="menu dashboard">
-                <li class="active dashboard">
-                    <a href="#">
-                        <span class="fas fa-tachometer-alt icon"></span>
-                        <span>Dashboard</span>
+        <div class="grid-container dashboard">
+            <header class="header dashboard">
+                <div class="menu-icon dashbboard" onclick="openSidebar()">
+                    <span class="material-icons-outlined dashboard">menu</span>
+                </div>
+                <div class="header-left dashboard">
+                    <span class="material-icons-outlined dashboard">search</span>
+                </div>
+                <div class="header-right dashbboard">
+                    <span class="material-icons-outlined dashboard">notifications</span>
+                    <span class="material-icons-outlined dashboard">email</span>
+                    <span class="material-icons-outlined dashboard">account circle</span>
+                </div>
+            </header>
+
+            <aside id="sidebar">
+                <div class="sidebar-title dashboard">
+                  <div class="sidebar-brand dashboard">
+                    <span class="material-icons-outlined">inventory</span> User's Inventory
+                  </div>
+                  <span class="material-icons-outlined" onclick="closeSidebar()">close</span>
+                </div>
+        
+                <ul class="sidebar-list dashboard">
+                  <li class="sidebar-list-item">
+                    <a href="#" target="_blank">
+                      <span class="material-icons-outlined">dashboard</span> Dashboard
                     </a>
-                </li>
-                <li class="dashboard">
-                    <a href="#">
-                        <span class="fas fa-user icon"></span>
-                        <span>Profile</span>
+                  </li>
+                  <li class="sidebar-list-item">
+                    <a href="#" target="_blank">
+                        <span class="material-icons-outlined">person</span> Profile
                     </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <span class="fas fa-chart-bar icon"></span>
-                        <span>Statistics</span>
+                  </li>
+                  <li class="sidebar-list-item">
+                    <a href="#" target="_blank">
+                        <span class="material-icons-outlined">wallet</span> Wallet
                     </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <span class="fas fa-briefcase icon"></span>
-                        <span>Careers</span>
+                  </li>
+                  <li class="sidebar-list-item">
+                    <a href="#" target="_blank">
+                      <span class="material-icons-outlined">poll</span> Reports
                     </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <span class="fas fa-question-circle icon"></span>
-                        <span>FAQ</span>
+                  </li>
+                  <li class="sidebar-list-item">
+                    <a href="#" target="_blank">
+                        <span class="material-icons-outlined">help</span> Help
                     </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <span class="fas fa-star icon"></span>
-                        <span>Testimonials</span>
+                  </li>
+                  <li class="sidebar-list-item">
+                    <a href="#" target="_blank">
+                      <span class="material-icons-outlined">settings</span> Settings
                     </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <span class="fas fa-cog icon"></span>
-                        <span>Settings</span>
-                    </a>
-                </li>
-                <li id="lgo">
-                    <a class="logout dashboard" href="#">
-                        <span class="fas fa-sign-out-alt"></span>
-                        <span>Logout</span>
-                    </a>
-                </li>
-            </ul>
+                  </li>
+                </ul>
+            </aside>
+
+            <main class="main-container sahboard">
+                <div class="main-title dashboard">
+                    <p class="font-weight-bold">DASHBOARD</p>
+                </div>
+
+                <div class="main-cards dashboard">
+                    <div class="card dashboard">
+                        <div class="card-inner dashboard">
+                            <p class="text-primary"> </p>
+                            <span class="material-icons-outlined text-blue"> </span>
+                        </div>
+                    </div>
+                </div>
+
+            </main>
+
+
         </div>
-        <script src="" async defer></script>
+        <script src="main.js" async defer></script>
     </body>
 </html>
