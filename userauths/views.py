@@ -3,6 +3,7 @@ from userauths.forms import UserRegisterForm
 from django.contrib import messages
 from django.contrib.auth import login, authenticate, logout
 from django.conf import settings
+from django.contrib.auth.decorators import login_required
 # Create your views here.
 
 User = settings.AUTH_USER_MODEL
@@ -17,7 +18,7 @@ def registerView(request):
             newUser = authenticate(username=form.cleaned_data['email'], password=form.cleaned_data['password1'])
             login(request, newUser)
 
-            return redirect("manager:index")
+            return redirect("manager:index") #maybe redirect to the login page instead
     else:
         form = UserRegisterForm()
     
@@ -29,7 +30,7 @@ def registerView(request):
 
 def loginView(request):
     if request.user.is_authenticated:
-        return redirect("manager:index")
+        return redirect("manager:dashboard")
     
     if request.method == "POST":
         email = request.POST.get("email")
@@ -48,9 +49,20 @@ def loginView(request):
         else:
             messages.warning(request, "The user does not exist.")
 
-    return render(request, "userauths/sign-in.html")#editar
+    return render(request, "userauths/dashboard.html")#editar
 
 def logoutView(request):
     logout(request)
     messages.success(request, f"Sucessfully logged out.")
     return redirect("userauths:sign-in")
+
+# @login_required(login_url='sign-in')
+# def dashboardView(request):
+
+
+
+#     context = {
+#         'temp':
+#     }
+
+#     return render(request, "userauths/sign-in.html", context)
