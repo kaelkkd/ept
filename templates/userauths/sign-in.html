@@ -1,5 +1,4 @@
 {% load static %}
-
 <!DOCTYPE html>
 <html>
     <head class="register">
@@ -17,9 +16,11 @@
                     {% csrf_token %}
                     <h1>Login</h1>
                     <br>
-                    <input required type="email" placeholder="Email">
-                    <input required type="password" placeholder="Password">
-                    <p>Don't have an account? <a href="{% url "userauths:sign-up" %}"><strong class="register">Sign up</strong> now.</a></p>
+                    <!-- <input required type="email" placeholder="Email">
+                    <input required type="password" placeholder="Password"> -->
+                    {{form.email}}
+                    {{form.password1}}
+                    <p>Don't have an account? <a href="{% url "userauths:sign-up" %}"><strong class="register">Sign up now.</strong></a></p>
                     <button type="submit">Sign in</button>
                 </form>
             </div>
