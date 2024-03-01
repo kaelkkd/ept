@@ -1,122 +1,142 @@
 {% load static %}
+{% block content %}
+
 <!DOCTYPE html>
-<html>
-    <head class="dashboard">
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Dashboard</title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
-        <link rel="stylesheet" href="{% static 'assets\css\style.css' %}">
-    </head>
-    <body class="dashboard">
-        <div class="grid-container dashboard">
-            <header class="header dashboard">
-                <div class="menu-icon dashbboard" onclick="openSidebar()">
-                    <span class="material-icons-outlined dashboard">menu</span>
-                </div>
-                <div class="header-left dashboard">
-                    <span class="material-icons-outlined">search</span>
-                </div>
-                <div class="header-right dashbboard">
-                    <span class="material-icons-outlined">notifications</span>
-                    <span class="material-icons-outlined">email</span>
-                    <span class="material-icons-outlined">account circle</span>
-                </div>
-            </header>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+    <link rel="stylesheet" href="{% static "assets\css\dashboard.css" %}">
+    <title>Admin panel</title>
+</head>
 
-            <aside id="sidebar">
-                <div class="sidebar-title dashboard">
-                  <div class="sidebar-brand dashboard">
-                    <span class="material-icons-outlined">inventory</span> User's Inventory
-                  </div>
-                  <span class="material-icons-outlined" onclick="closeSidebar()">close</span>
-                </div>
-        
-                <ul class="sidebar-list dashboard">
-                  <li class="sidebar-list-item">
-                    <a href="#" target="_blank">
-                      <span class="material-icons-outlined">dashboard</span> Dashboard
-                    </a>
-                  </li>
-                  <li class="sidebar-list-item">
-                    <a href="#" target="_blank">
-                        <span class="material-icons-outlined">person</span> Profile
-                    </a>
-                  </li>
-                  <li class="sidebar-list-item">
-                    <a href="#" target="_blank">
-                        <span class="material-icons-outlined">wallet</span> Wallet
-                    </a>
-                  </li>
-                  <li class="sidebar-list-item">
-                    <a href="#" target="_blank">
-                      <span class="material-icons-outlined">poll</span> Reports
-                    </a>
-                  </li>
-                  <li class="sidebar-list-item">
-                    <a href="#" target="_blank">
-                        <span class="material-icons-outlined">help</span> Help
-                    </a>
-                  </li>
-                  <li class="sidebar-list-item">
-                    <a href="#" target="_blank">
-                      <span class="material-icons-outlined">settings</span> Settings
-                    </a>
-                  </li>
-                </ul>
-            </aside>
-
-            <main class="main-container sahboard">
-                <div class="main-title dashboard">
-                    <p class="font-weight-bold">DASHBOARD</p>
-                </div>
-
-                <div class="main-cards dashboard">
-
-                    <div class="card dashboard">
-                        <div class="card-inner dashboard">
-                            <p class="text-primary"> CLASS 1 </p>
-                            <span class="material-icons-outlined text-blue">inventory_2</span>
-                        </div>
-                         <span class="text-primary font-weight-bold">249</span>
-                    </div>
-
-                    <div class="card dashboard">
-                      <div class="card-inner dashboard">
-                          <p class="text-primary"> CLASS 2</p>
-                          <span class="material-icons-outlined text-blue">add_shopping_cart</span>
-                      </div>
-                       <span class="text-primary font-weight-bold">83</span>
-                    </div>
-
-                    <div class="card dashboard">
-                      <div class="card-inner dashboard">
-                          <p class="text-primary">CLASS 3</p>
-                          <span class="material-icons-outlined text-blue">shopping_cart</span>
-                      </div>
-                       <span class="text-primary font-weight-bold">49</span>
-                    </div>
-
-                    <div class="card dashboard">
-                      <div class="card-inner dashboard">
-                          <p class="text-primary">CLASS 4</p>
-                          <span class="material-icons-outlined text-blue">notification_important</span>
-                      </div>
-                       <span class="text-primary font-weight-bold">29</span>
-                    </div>
-
-                    <div class="charts dashboard">
-                      <div class="charts-card">
-                        <p class="chart-title">Top 5 products</p>
-                        <div id="area-chart"></div>
-                      </div>
-                    </div>
-                </div>
-            </main>
+<body>
+    <div class="container">
+        <div class="topbar">
+            <div class="logo">
+                <h2>EPT</h2>
+            </div>
+            <div class="search">
+                <input type="text" name="search" placeholder="search here">
+                <label for="search"><i class="fas fa-search"></i></label>
+            </div>
+            <i class="fas fa-bell"></i>
+            <div class="user">
+                <img src="img/user.png" alt="">
+            </div>
         </div>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/apexcharts/3.35.3/apexcharts.min.js"></script>
-        <script src="main.js" async defer></script>
-    </body>
+        <div class="sidebar">
+            <ul>
+                <li>
+                    <a href="#">
+                        <i class="fas fa-th-large"></i>
+                        <div>Dashboard</div>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="fas fa-user-graduate"></i>
+                        <div>Students</div>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="fas fa-chalkboard-teacher"></i>
+                        <div>Teachers</div>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="fas fa-users"></i>
+                        <div>Employees</div>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="fas fa-chart-bar"></i>
+                        <div>Analytics</div>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="fas fa-hand-holding-usd"></i>
+                        <div>Earnings</div>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="fas fa-cog"></i>
+                        <div>Settings</div>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="fas fa-question"></i>
+                        <div>Help</div>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="main">
+            <div class="cards">
+                <div class="card">
+                    <div class="card-content">
+                        <div class="number">1217</div>
+                        <div class="card-name">Students</div>
+                    </div>
+                    <div class="icon-box">
+                        <i class="fas fa-user-graduate"></i>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-content">
+                        <div class="number">42</div>
+                        <div class="card-name">Teachers</div>
+                    </div>
+                    <div class="icon-box">
+                        <i class="fas fa-chalkboard-teacher"></i>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-content">
+                        <div class="number">68</div>
+                        <div class="card-name">Employees</div>
+                    </div>
+                    <div class="icon-box">
+                        <i class="fas fa-users"></i>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-content">
+                        <div class="number">$4500</div>
+                        <div class="card-name">Earnings</div>
+                    </div>
+                    <div class="icon-box">
+                        <i class="fas fa-dollar-sign"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="charts">
+                <div class="chart">
+                    <h2>Earnings (past 12 months)</h2>
+                    <div>
+                        <canvas id="lineChart"></canvas>
+                    </div>
+                </div>
+                <div class="chart doughnut-chart">
+                    <h2>Employees</h2>
+                    <div>
+                        <canvas id="doughnut"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+    <script src="{% static "assets\js\chart1.js" %}"></script>
+    <script src="{% static "assets\js\chart2.js" %}"></script>
+</body>
+
 </html>
