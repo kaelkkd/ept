@@ -1,7 +1,7 @@
 {% load static %}
 <!DOCTYPE html>
 <html>
-    <head class="register">
+    <head class="login">
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <title>EPT - Login</title>
@@ -9,17 +9,23 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="{% static 'assets\css\style.css' %}">
     </head>
-    <body class="register">
-        <div class="container register">
-            <div class="container-form register">
-                <form class="container-form" method="post" method="POST">
+    <body class="login">
+        {% if form.errors %}
+        <div class="alert alert-danger">
+            <strong>{{form.errors}}</strong>
+        </div>
+        {% endif %}
+        <div class="container login">
+            <div class="container-form login">
+                {% include 'userauths\messages.html' %}
+                <form class="container-form" method="get" method="GET">
                     {% csrf_token %}
                     <h1>Login</h1>
                     <br>
                     <!-- <input required type="email" placeholder="Email">
                     <input required type="password" placeholder="Password"> -->
-                    {{form.email}}
-                    {{form.password1}}
+                    {{form.username}}
+                    {{form.password}}
                     <p>Don't have an account? <a href="{% url "userauths:sign-up" %}"><strong class="register">Sign up now.</strong></a></p>
                     <button type="submit">Sign in</button>
                 </form>

@@ -17,6 +17,7 @@
         {% endif %}
         <div class="container register">
             <div class="container-form register">
+                {% include 'userauths\messages.html' %}
                 <form class="container-form" method="post" method="POST">
                     {% csrf_token %}
                     <h1>Create Account</h1>
