@@ -8,14 +8,15 @@ class UserRegisterForm(UserCreationForm):
     password1 = forms.CharField(widget=forms.PasswordInput(attrs={"placeholder":"Password"}))
     password2 = forms.CharField(widget=forms.PasswordInput(attrs={"placeholder":"Confirm password"}))
     
-    
     class Meta:
         model = User
         fields = ['username', 'email']
 
 class UserAuthenticationForm(AuthenticationForm):
-    username = forms.CharField(max_length=254)
-    password1 = forms.CharField(widget=forms.PasswordInput)
+    username = forms.CharField(widget=forms.TextInput(attrs={"placeholder":"Username"}))
+    password = forms.CharField(widget=forms.PasswordInput(attrs={"placeholder":"Password"}))
 
-    
+    class Meta:
+        model = User
+        fields = ['username', 'password']
 
