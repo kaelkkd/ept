@@ -15,15 +15,21 @@
             <strong>{{form.errors}}</strong>
         </div>
         {% endif %}
+
+        {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+
         <div class="container login">
             <div class="container-form login">
-                {% include 'userauths\messages.html' %}
-                <form class="container-form" method="get" method="GET">
+                <form class="container-form" method="post">
                     {% csrf_token %}
                     <h1>Login</h1>
                     <br>
-                    <!-- <input required type="email" placeholder="Email">
-                    <input required type="password" placeholder="Password"> -->
                     {{form.username}}
                     {{form.password}}
                     <p>Don't have an account? <a href="{% url "userauths:sign-up" %}"><strong class="register">Sign up now.</strong></a></p>

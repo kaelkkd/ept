@@ -185,7 +185,7 @@ footer.landing > div {
 }
 
 /* Login page */
-body.register{
+body.register, body.login{
     background-color: var(--dark);
     background: linear-gradient(to right, --dark2, --dark4);
     display: flex;
@@ -195,7 +195,7 @@ body.register{
     height: 100vh;
 }
 
-.container.register{
+.container.register, .container.login{
     background-color: #fff;
     border-radius: 20px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.35);
@@ -206,24 +206,24 @@ body.register{
     min-height: 480px;
 }
 
-.container.register p{
+.container.register p, .container.login p{
     font-size: 14px;
     line-height: 20px;
     letter-spacing: 0.3px;
     margin: 20px 0;
 }
 
-.container.register span{
+.container.register span, .container.login span{
     font-size: 12px;
 }
 
-.container.register a{
+.container.register a, .container.login a{
     font-size: 13px;
     text-decoration: none;
     margin: 15px 0 10px;
 }
 
-.container.register button{
+.container.register button, .container.login button{
     background-color: var(--dark2);
     color: #fff;
     font-size: 12px;
@@ -237,11 +237,11 @@ body.register{
     cursor: pointer;
 }
 
-strong.register{
+strong.register, strong.login{
     color: cyan;
 }
 
-.container.register form{
+.container.register form, .container.login form{
     background-color: #fff;
     display: flex;
     align-items: center;
@@ -251,7 +251,7 @@ strong.register{
     height: 100%;
 }
 
-.container.register input{
+.container.register input, .container.login input{
     background-color: #eeeeee;
     border: none;
     margin: 9px 0;
@@ -262,7 +262,7 @@ strong.register{
     outline: none;
 }
 
-.container-form.register{
+.container-form.register, .container-form.login{
     position: static;
     top: 50;
     height: 100%;
