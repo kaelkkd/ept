@@ -1,6 +1,3 @@
-{% load static %}
-{% block content %}
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
-    <link rel="stylesheet" href="{% static "assets\css\dashboard.css" %}">
+    <link rel="stylesheet" href="dashboard.css">
     <title>Admin panel</title>
 </head>
 
@@ -83,38 +80,38 @@
             <div class="cards">
                 <div class="card">
                     <div class="card-content">
-                        <div class="number">1217</div>
-                        <div class="card-name">Students</div>
+                        <div class="number">$1217</div>
+                        <div class="card-name">Total savings</div>
                     </div>
                     <div class="icon-box">
-                        <i class="fas fa-user-graduate"></i>
+                        <i class="fas fa-dollar-sign"></i>
                     </div>
                 </div>
                 <div class="card">
                     <div class="card-content">
-                        <div class="number">42</div>
-                        <div class="card-name">Teachers</div>
+                        <div class="number">$42</div>
+                        <div class="card-name">30-days savings</div>
                     </div>
                     <div class="icon-box">
-                        <i class="fas fa-chalkboard-teacher"></i>
+                        <i class="fas fa-piggy-bank"></i>
                     </div>
                 </div>
                 <div class="card">
                     <div class="card-content">
                         <div class="number">68</div>
-                        <div class="card-name">Employees</div>
+                        <div class="card-name">This should be a balance</div>
                     </div>
                     <div class="icon-box">
-                        <i class="fas fa-users"></i>
+                        <i class="fas fa-scale-balanced"></i>
                     </div>
                 </div>
                 <div class="card">
                     <div class="card-content">
-                        <div class="number">$4500</div>
-                        <div class="card-name">Earnings</div>
+                        <div class="number">Rent</div>
+                        <div class="card-name">Main category</div>
                     </div>
                     <div class="icon-box">
-                        <i class="fas fa-dollar-sign"></i>
+                        <i class="fas fa-list"></i>
                     </div>
                 </div>
             </div>
@@ -135,8 +132,8 @@
         </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
-    <script src="{% static "assets\js\chart1.js" %}"></script>
-    <script src="{% static "assets\js\chart2.js" %}"></script>
+    <script src="chart1.js"></script>
+    <script src="chart2.js"></script>
 </body>
 
 </html>
