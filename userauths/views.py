@@ -4,7 +4,6 @@ from django.contrib import messages
 from django.contrib.auth import login, authenticate, logout
 from django.conf import settings
 from django.contrib.auth.decorators import login_required
-from django.http import HttpResponse, HttpResponseRedirect
 
 User = settings.AUTH_USER_MODEL
 
@@ -14,10 +13,7 @@ def registerView(request):
         if form.is_valid():
             form.save()
             messages.success(request, f"You account was succesfully created.")
-            # newUser = authenticate(username=form.cleaned_data['email'], password=form.cleaned_data['password1'])
-            # login(request, newUser)
-
-            return redirect("userauths:sign-in") #maybe redirect to the login page instead
+            return redirect("userauths:sign-in")
     else:
         form = UserRegisterForm()
     
@@ -31,17 +27,14 @@ def loginView(request):
     if request.method == 'POST':
         form = UserAuthenticationForm(request.POST)
         if form.is_valid():
-            # credentials = form.cleaned_data
             username = form.cleaned_data['username']
             password = form.cleaned_data['password']
             user = authenticate(username=username, password=password)
             if user is not None:
                 login(request, user)
-                return redirect('manager/dashboard.html')
-            else:
-                messages.error(request, f"The user does not exist.")
+                return redirect('manager:dashboard')
         else:
-            messages.error(request, f'Invalid email/password.')
+            messages.error(request, f'Invalid username/password.')
     else:
         form = UserAuthenticationForm()
 
