@@ -4,14 +4,16 @@ from django.contrib import messages
 from django.contrib.auth import login, authenticate, logout
 from django.conf import settings
 from django.contrib.auth.decorators import login_required
+from django.db import connection
 
 User = settings.AUTH_USER_MODEL
 
 def registerView(request):
     if request.method == "POST":
-        form = UserRegisterForm(request.POST or None)
+        form = UserRegisterForm(request.POST)
         if form.is_valid():
             form.save()
+            print(connection.queries)
             messages.success(request, f"You account was succesfully created.")
             return redirect("userauths:sign-in")
     else:
@@ -25,7 +27,7 @@ def registerView(request):
 
 def loginView(request):
     if request.method == 'POST':
-        form = UserAuthenticationForm(request.POST)
+        form = UserAuthenticationForm(data=request.POST)
         if form.is_valid():
             username = form.cleaned_data['username']
             password = form.cleaned_data['password']
@@ -48,11 +50,3 @@ def logoutView(request):
     logout(request)
     messages.success(request, f"Sucessfully logged out.")
     return redirect("userauths:sign-in")
-
-# @login_required(login_url='sign-in')
-# def dashboardView(request):
-#     context = {
-#         'temp':
-#     }
-
-#     return render(request, "userauths/sign-in.html", context)
