@@ -5,6 +5,7 @@ app_name = "manager"
 
 urlpatterns = [
     path("", views.index, name="index"),
-    path("", views.dashboard, name="dashboard"),
+    path("dashboard/", views.dashboard, name="dashboard"),
+    path("dashboard/transactions", views.transactions, name="transactions"),
 ]
 
