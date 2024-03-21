@@ -7,8 +7,8 @@ class User(AbstractUser):
     username = models.CharField(unique=True, max_length=100)
     bio = models.CharField(max_length=250, unique=False, null=True)
 
-    USERNAME_FIELD = "email"
-    REQUIRED_FIELDS = ["username"]
+    USERNAME_FIELD = "username"
+    REQUIRED_FIELDS = ["email"]
 
     def str(self) -> str:
         return self.username
