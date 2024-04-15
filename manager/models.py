@@ -21,3 +21,10 @@ class Wallet(models.Model):
     def str(self) -> float:
         return self.balance
     
+class Transaction(models.Model):
+    value = models.DecimalField(null=False, max_digits=10, decimal_places=2)
+    date = models.DateField(auto_now=True, auto_now_add=False)
+    description = models.TextField(editable=False, max_length=100)
+
+    def str(self) -> str:
+        return self.value
