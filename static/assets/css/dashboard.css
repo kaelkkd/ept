@@ -258,3 +258,64 @@ img {
         height: 40px;
     }
 }
+/* 
+.wallet {
+    padding: 20px;
+    border-radius: 10px;
+} */
+
+.wallet {
+    padding: 20px;
+    background-color: var(--dark6);
+}
+
+.wallet h1 {
+    color: #fff;
+    margin-bottom: 20px;
+    font-size: 24px;
+}
+.wallet h2{
+    color: #fff;
+    font-size: 20px;
+}
+
+.wallet-form {
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.wallet-form .form-group {
+    margin-bottom: 20px;
+}
+
+.wallet-form label {
+    color: #fff;
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.wallet-form select,
+.wallet-form input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+.wallet-form button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: var(--dark2);
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.wallet-form button:hover {
+    background-color: var(--dark3);
+}
