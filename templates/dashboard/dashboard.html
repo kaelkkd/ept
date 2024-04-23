@@ -1,0 +1,60 @@
+{% extends 'dashboard/base.html' %}
+
+{% block content %}
+
+<div class="main">
+    <div class="cards">
+        <div class="card">
+            <div class="card-content">
+                <div class="number">$1217</div>
+                <div class="card-name">Total savings</div>
+            </div>
+            <div class="icon-box">
+                <i class="fas fa-dollar-sign"></i>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-content">
+                <div class="number">$42</div>
+                <div class="card-name">30-days savings</div>
+            </div>
+            <div class="icon-box">
+                <i class="fas fa-piggy-bank"></i>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-content">
+                <div class="number">$68</div>
+                <div class="card-name">Yearly balance</div>
+            </div>
+            <div class="icon-box">
+                <i class="fas fa-balance-scale"></i>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-content">
+                <div class="number">Rent</div>
+                <div class="card-name">Main category</div>
+            </div>
+            <div class="icon-box">
+                <i class="fas fa-list"></i>
+            </div>
+        </div>
+    </div>
+    <div class="charts">
+        <div class="chart">
+            <h2>Earnings (past 12 months)</h2>
+            <div>
+                <canvas id="lineChart"></canvas>
+            </div>
+        </div>
+        <div class="chart doughnut-chart">
+            <h2>Employees</h2>
+            <div>
+                <canvas id="doughnut"></canvas>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

@@ -1,23 +1,21 @@
 from django.shortcuts import render, redirect
-from userauths.forms import UserRegisterForm
+from userauths.forms import UserRegisterForm, UserAuthenticationForm
 from django.contrib import messages
 from django.contrib.auth import login, authenticate, logout
 from django.conf import settings
-# Create your views here.
+from django.contrib.auth.decorators import login_required
+from django.db import connection
 
 User = settings.AUTH_USER_MODEL
 
 def registerView(request):
     if request.method == "POST":
-        form = UserRegisterForm(request.POST or None)
+        form = UserRegisterForm(request.POST)
         if form.is_valid():
-            newUser = form.save()
-            username = form.cleaned_data.get("username")
+            form.save()
+            print(connection.queries)
             messages.success(request, f"You account was succesfully created.")
-            newUser = authenticate(username=form.cleaned_data['email'], password=form.cleaned_data['password1'])
-            login(request, newUser)
-
-            return redirect("manager:index")
+            return redirect("userauths:sign-in")
     else:
         form = UserRegisterForm()
     
@@ -28,27 +26,25 @@ def registerView(request):
     return render(request, "userauths/sign-up.html", context)
 
 def loginView(request):
-    if request.user.is_authenticated:
-        return redirect("manager:index")
-    
-    if request.method == "POST":
-        email = request.POST.get("email")
-        password = request.POST.get("password")
-        
-        try:
-            user = user.objects.get(email=email)
-        except:
-            messages.warning(request, f"User {email} does not exist.")
-
-        user = authenticate(request, email=email, password=password)
-
-        if user is not None:
-            login(request, user)
-            messages.success(request, "You are now logged in.")
+    if request.method == 'POST':
+        form = UserAuthenticationForm(data=request.POST)
+        if form.is_valid():
+            username = form.cleaned_data['username']
+            password = form.cleaned_data['password']
+            user = authenticate(username=username, password=password)
+            if user is not None:
+                login(request, user)
+                return redirect('manager:dashboard')
         else:
-            messages.warning(request, "The user does not exist.")
+            messages.error(request, f'Invalid username/password.')
+    else:
+        form = UserAuthenticationForm()
 
-    return render(request, "userauths/sign-in.html")#editar
+    context = {
+        'form':form
+    }
+
+    return render(request, 'userauths/sign-in.html', context)
 
 def logoutView(request):
     logout(request)
