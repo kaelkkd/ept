@@ -258,11 +258,6 @@ img {
         height: 40px;
     }
 }
-/* 
-.wallet {
-    padding: 20px;
-    border-radius: 10px;
-} */
 
 .wallet {
     padding: 20px;
@@ -279,9 +274,35 @@ img {
     font-size: 20px;
 }
 
-.wallet-form {
+.wallet-form, .wallet-choices {
     max-width: 500px;
     margin: 0 auto;
+}
+
+.wallet-choices ul{
+    list-style: none;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.wallet-choices ul li{
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    text-align: center;
+    margin-bottom: 12px;
+}
+
+.wallet-choices ul li:hover{
+    background-color: var(--dark2);
+}
+
+.wallet-choices ul li a{
+    display: block;
+    color: #fff;
+    text-decoration: none;
+    padding: 22px;
+    font-size: 17px;
 }
 
 .wallet-form .form-group {
@@ -317,5 +338,77 @@ img {
 }
 
 .wallet-form button:hover {
-    background-color: var(--dark3);
+    background-color: var(--dark2);
 }
+
+
+.transactions {
+    margin-top: 80px; 
+    padding: 20px;
+    background-color: var(--dark6);
+    /* align-items: center; */
+}
+
+.transaction-redirect {
+    margin-bottom: 20px;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    display: flex;
+    padding: 20px;
+    border-radius: 5px;
+    max-width: 500px;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    cursor: pointer;
+}
+
+.transaction-redirect a {
+    display: block;
+    color: #fff;
+    text-align: center;
+    text-decoration: none;
+}
+
+.transaction-redirect:hover {
+    background-color: var(--dark2);
+}
+
+.transactions-list {
+    background-color: var(--dark);
+    padding: 20px;
+    border-radius: 5px;
+}
+
+.transactions-list p {
+    color: #fff;
+}
+
+.transactions-list h2 {
+    font-size: 24px;
+    margin-bottom: 15px;
+}
+
+.transactions-list ul {
+    list-style: none;
+    padding: 0;
+}
+
+.transactions-list li {
+    margin-bottom: 15px;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 10px;
+}
+
+.transactions-list li:last-child {
+    border-bottom: none;
+}
+
+.transactions-list li strong {
+    font-weight: bold;
+    margin-right: 5px;
+}
+
+
