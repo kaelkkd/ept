@@ -14,7 +14,15 @@ def dashboard(request):
 
 @login_required(login_url='sign-in/')
 def transactions(request):
-    return render(request, 'dashboard/transactions.html')
+    userWallet = Wallet.objects.get(owner=request.user)
+    if userWallet:
+        transactions = Transaction.objects.filter(wallet=userWallet)
+    else:
+        transactions = []
+
+    context = {'transactions':transactions}
+
+    return render(request, 'dashboard/transactions.html', context)
 
 @login_required(login_url='sign-in/')
 def wallet(request):
