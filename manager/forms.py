@@ -1,5 +1,6 @@
 from django import forms
-from .models import Wallet
+from django.forms import DateTimeInput, DateField
+from .models import *
 
 class WalletCreationForm(forms.Form):
     currency = forms.ChoiceField(choices=Wallet.CURRENCY)
@@ -11,7 +12,12 @@ class WalletUpdateForm(forms.ModelForm):
         model = Wallet
         fields = ['balance', 'monthlyIncome', 'currencyType']
     
-# class TransactionCreationForm(forms.Form):
-#     value = forms.DecimalField(max_digits=10, decimal_places=2)
-#     # date = forms.DateField(auto_now=True)
-#     description = forms.TextInput()
+class TransactionCreationForm(forms.Form):
+    value = forms.DecimalField(max_digits=10, decimal_places=2)
+    date = forms.DateField(widget=forms.TextInput(attrs={'type':'date'}))
+    description = forms.CharField(widget=forms.Textarea(attrs={'rows':3}))
+
+class TransactionEditForm(forms.ModelForm):
+    class Meta:
+        model = Transaction
+        fields = ['value', 'date', 'description']
