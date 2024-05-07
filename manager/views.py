@@ -81,7 +81,6 @@ def addTransaction(request):
             usrWallet, created = Wallet.objects.get_or_create(owner= user)
             if created:
                 messages.warning(request, f"A new wallet was created.")
-
             transaction = Transaction(wallet=usrWallet, value=data['value'], date=data['date'], description=data['description'])
             transaction.save()
             messages.success(request, f"Transaction sucessfully added.")
@@ -92,3 +91,15 @@ def addTransaction(request):
     context = {'form':form}
 
     return render(request, 'dashboard/add-transaction.html', context)
+
+@login_required(login_url='sign-in/')
+def deleteTransaction(request):
+    if request.method == "POST":
+        transactionId = request.POST.get('transactionId')
+        transaction = Transaction.objects.get(pk = transactionId)
+        transaction.delete()
+        messages.success(request, f"Transaction sucessfully deleted.")
+        redirect ('dashboard/transactions.html')
+
+    return render(request, 'dashboard/delete-transaction.html')
+
