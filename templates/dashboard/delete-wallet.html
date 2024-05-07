@@ -3,9 +3,7 @@
 {% block content %}
 
 <div class="main">
-    <div class="wallet">
-        <h1>Hello {{ user.username }}!</h1>
-        
+    <div class="transactions">
         {% if form.errors %}
         <div class="alert alert-danger">
             <strong>{{ form.errors }}</strong>
@@ -21,12 +19,12 @@
         {% endif %}
 
         <div class="wallet-choices">
-            <h3>Do you wish to delete your wallet?</h3>
+            <h3>Do you wish to delete your wallet? This action is irreversible.</h3>
             <form method="POST" action="{% url 'manager:delete-wallet' %}">
                 {% csrf_token %}
-                <div class="wallet-button">
+                <div class="general-form" id="delete-wallet">
                     <button type="submit" class="wallet-del-button">Delete</button>
-                    <a href="{% url 'manager:wallet' %}" class="wallet-canc-button">Cancel</a>
+                    <a href="{% url 'manager:wallet' %}" class="general-form-cancel">Cancel</a>
                 </div>
             </form>
         </div>
