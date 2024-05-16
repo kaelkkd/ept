@@ -20,19 +20,19 @@
         </ul>
         {% endif %}
 
-        <div class="general-form">
+        <div class="wallet-form">
             <form class="w-form" method="post">
                 {% csrf_token %}
                 <h2>Update your wallet info here</h2>
-                <div class="general-form">
+                <div class="wallet-form">
                     <label for="currency">Currency:</label>
                     {{ form.currencyType }}
                 </div>
-                <div class="general-form">
+                <div class="wallet-form">
                     <label for="income">Monthly Income:</label>
                     {{ form.monthlyIncome }}
                 </div>
-                <div class="general-form">
+                <div class="wallet-form">
                     <label for="balance">Balance:</label>
                     {{ form.balance }}
                 </div>
