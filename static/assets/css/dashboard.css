@@ -305,21 +305,21 @@ img {
     font-size: 17px;
 }
 
-.wallet-form, .form-group {
+.wallet-form, .form-group, .transaction-form {
     margin-bottom: 10px;
     margin-top: 18px;
     padding: 16px;
 }
 
-.wallet-form label {
+.wallet-form label, .transaction-form label {
     color: #fff;
     display: block;
     margin-bottom: 5px;
     font-weight: bold;
 }
 
-.wallet-form select,
-.wallet-form input {
+.wallet-form select, .wallet-form input,
+.transaction-form select, .transaction-form input {
     width: 100%;
     padding: 10px;
     border: 1px solid #ccc;
@@ -327,7 +327,7 @@ img {
     box-sizing: border-box;
 }
 
-.wallet-form button {
+.wallet-form button , .transaction-form button {
     display: block;
     width: 100%;
     padding: 10px;
@@ -339,7 +339,7 @@ img {
     transition: background-color 0.3s ease;
 }
 
-.wallet-form button:hover {
+.wallet-form button:hover, .transaction-form button:hover {
     background-color: var(--dark2);
 }
 
@@ -366,16 +366,14 @@ img {
     color: #fff;
 }
 
-.wallet-form h2{
+.wallet-form h2, .transaction-form h2{
     color: #fff;
     margin-bottom: 5px;
 }
 
 .transactions {
-    margin-top: 80px; 
     padding: 20px;
     background-color: var(--dark6);
-    /* align-items: center; */
 }
 
 .transaction-redirect {
