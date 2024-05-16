@@ -274,7 +274,7 @@ img {
     font-size: 20px;
 }
 
-.general-form, .wallet-choices {
+.wallet-form, .wallet-choices {
     max-width: 500px;
     margin: 0 auto;
 }
@@ -305,21 +305,21 @@ img {
     font-size: 17px;
 }
 
-.general-form, .form-group {
+.wallet-form, .form-group {
     margin-bottom: 10px;
     margin-top: 18px;
     padding: 16px;
 }
 
-.general-form label {
+.wallet-form label {
     color: #fff;
     display: block;
     margin-bottom: 5px;
     font-weight: bold;
 }
 
-.general-form select,
-.general-form input {
+.wallet-form select,
+.wallet-form input {
     width: 100%;
     padding: 10px;
     border: 1px solid #ccc;
@@ -327,7 +327,7 @@ img {
     box-sizing: border-box;
 }
 
-.general-form button {
+.wallet-form button {
     display: block;
     width: 100%;
     padding: 10px;
@@ -339,11 +339,11 @@ img {
     transition: background-color 0.3s ease;
 }
 
-.general-form button:hover {
+.wallet-form button:hover {
     background-color: var(--dark2);
 }
 
-.general-form-cancel{
+.wallet-form-cancel{
     text-decoration: none;
     color: #fff;
     display: block;
@@ -358,7 +358,7 @@ img {
     font-size: 14px;
 }
 
-.general-form-cancel:hover {
+.wallet-cancel:hover {
     background-color: var(--dark2);
 }
 
@@ -366,7 +366,7 @@ img {
     color: #fff;
 }
 
-.general-form h2{
+.wallet-form h2{
     color: #fff;
     margin-bottom: 5px;
 }
@@ -442,4 +442,3 @@ img {
     margin-bottom: 15px;
     color: #fff;
 }
-
