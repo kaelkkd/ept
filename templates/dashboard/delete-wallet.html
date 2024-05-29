@@ -22,9 +22,9 @@
             <h3>Do you wish to delete your wallet? This action is irreversible.</h3>
             <form method="POST" action="{% url 'manager:delete-wallet' %}">
                 {% csrf_token %}
-                <div class="general-form" id="delete-wallet">
+                <div class="wallet-form" id="delete-wallet">
                     <button type="submit" class="wallet-del-button">Delete</button>
-                    <a href="{% url 'manager:wallet' %}" class="general-form-cancel">Cancel</a>
+                    <a href="{% url 'manager:wallet' %}" class="wallet-canc-button">Cancel</a>
                 </div>
             </form>
         </div>
