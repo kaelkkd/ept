@@ -1,5 +1,6 @@
 from django.db import models
 from userauths.models import User
+from django.utils import timezone
 
 # Create your models he
 
@@ -24,7 +25,7 @@ class Wallet(models.Model):
 class Transaction(models.Model):
     wallet = models.ForeignKey('Wallet', on_delete=models.CASCADE, null=False)
     value = models.DecimalField(null=False, max_digits=10, decimal_places=2)
-    date = models.DateField(auto_now=True, auto_now_add=False)
+    date = models.DateField(default=timezone.now)
     description = models.TextField(max_length=100)
     
 

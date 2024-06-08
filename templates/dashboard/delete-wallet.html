@@ -1,0 +1,34 @@
+{% extends 'dashboard/wallet.html' %}
+
+{% block content %}
+
+<div class="main">
+    <div class="transactions">
+        {% if form.errors %}
+        <div class="alert alert-danger">
+            <strong>{{ form.errors }}</strong>
+        </div>
+        {% endif %}
+
+        {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+
+        <div class="wallet-choices">
+            <h3>Do you wish to delete your wallet? This action is irreversible.</h3>
+            <form method="POST" action="{% url 'manager:delete-wallet' %}">
+                {% csrf_token %}
+                <div class="wallet-form" id="delete-wallet">
+                    <button type="submit" class="wallet-del-button">Delete</button>
+                    <a href="{% url 'manager:wallet' %}" class="wallet-canc-button">Cancel</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

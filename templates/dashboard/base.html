@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link rel="stylesheet" href="{% static 'assets\css\dashboard.css' %}">
     <title>Admin panel</title>
 </head>
@@ -28,7 +29,7 @@
         <div class="sidebar">
             <ul>
                 <li>
-                    <a href="#">
+                    <a href="{% url "manager:dashboard" %}">
                         <i class="fas fa-th-large"></i>
                         <div>Dashboard</div>
                     </a>
@@ -41,8 +42,8 @@
                 </li>
                 <li>
                     <a href="{% url "manager:wallet" %}">
-                        <i class="fas fa-ballot-check"></i>
-                        <div>Statement</div>
+                        <i class="fas fa-wallet"></i>
+                        <div>Wallet</div>
                     </a>
                 </li>
                 <li>
@@ -72,6 +73,7 @@
     <script src="{% static 'chart.js@4.4.1/dist/chart.umd.min.js' %}"></script>
     <script src="{% static 'assets\js\chart1.js' %}"></script>
     <script src="{% static 'assets\js\chart2.js' %}"></script>
+    <script src="{% static 'assets\js\transactions.js' %}"></script>
 </body>
 
 </html>

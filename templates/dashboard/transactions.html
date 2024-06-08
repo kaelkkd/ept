@@ -1,22 +1,41 @@
-{% extends 'dashboard/base.html'%}
+{% extends 'dashboard/base.html' %}
 
 {% block content%}
-
-<div class="transactions">
-    <div class="transactions-body">
-        <hr>
-        <p> <strong> ID: </strong> {{record.id}} </p>
-        <p> <strong> Value: </strong> {{record.email}} </p>
-        <p> <strong> Description: </strong> {{record.phone}} </p>
-        <p> <strong> Date: </strong> {{record.address}} </p>
-
-        <p> <strong> Creation date: </strong> {{record.creation_date}} </p>
-
+<div class="main">
+    <div class="transactions">
+        <div class="transaction-redirect">
+            <a href="{% url "manager:add-transaction" %}">
+                <div>Add a new transaction</div>
+            </a>
+        </div>
+        <div class="generate-statement">
+            <a href="{% url "manager:generate-statement" %}">
+                <div>Generate statement</div>
+            </a>
+        </div>
+        <div class="transactions-list">
+            {% if transactions %}
+                <h2>Transaction details</h2>
+                <ul>
+                    {% for transaction in transactions%}
+                        <li>
+                            <p> <strong> ID: </strong> {{ transaction.id }} </p>
+                            <p> <strong> Date: </strong> {{ transaction.date }} </p>
+                            <p> <strong> Value: </strong> {{ transaction.value }} </p>
+                            <p> <strong> Description: </strong> {{ transaction.description }} </p>
+                            <div class="delete-transaction">
+                                <form class="delete-transaction-form" action="{% url 'manager:delete-transaction' %}" data-transaction-id="{{ transaction.id }}" method="POST">
+                                    {% csrf_token %}
+                                    <button type="submit" class="transaction-del-btn">Remove</button>
+                                </form>
+                            </div>
+                        </li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <p>No transactions found.</p>
+            {% endif %}
+        </div>
     </div>
-
-
-
-
 </div>
-
 {% endblock %}

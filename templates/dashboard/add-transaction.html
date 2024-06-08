@@ -1,0 +1,42 @@
+{% extends 'dashboard/base.html' %}
+
+{% block content %}
+<div class="main">
+    <div class="transactions">
+
+        {% if form.errors %}
+        <div class="alert alert-danger">
+            <strong>{{ form.errors }}</strong>
+        </div>
+        {% endif %}
+
+        {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+        <div class="transaction-form">
+            <form class="t-form" method="POST">
+                {% csrf_token %}
+                <h2>Insert the transaction information</h2>
+                <div class="transaction-form">
+                    <label for="value">Value:</label>
+                    {{ form.value }}
+                </div>
+                <div class="transaction-form">
+                    <label for="description">Description:</label>
+                    {{ form.description }}
+                </div>
+                <div class="transaction-form">
+                    <label for="date">Date:</label>
+                    {{ form.date }}
+                </div>
+                <button type="submit">Add transaction</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

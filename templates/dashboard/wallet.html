@@ -20,24 +20,24 @@
         </ul>
         {% endif %}
 
-        <div class="wallet-form">
-            <form class="w-form" method="post">
-                {% csrf_token %}
-                <h2>Edit your wallet info here</h2>
-                <div class="form-group">
-                    <label for="currency">Currency:</label>
-                    {{ form.currency }}
-                </div>
-                <div class="form-group">
-                    <label for="income">Monthly Income:</label>
-                    {{ form.income }}
-                </div>
-                <div class="form-group">
-                    <label for="balance">Balance:</label>
-                    {{ form.balance }}
-                </div>
-                <button type="submit">Update wallet</button>
-            </form>
+        <div class="wallet-choices">
+            <ul>
+                <li>
+                    <a href="{% url "manager:create-wallet" %}">
+                        <div>Create wallet</div>
+                    </a>
+                </li>
+                <li>
+                    <a href="{% url "manager:update-wallet" %}">
+                        <div>Update wallet</div>
+                    </a>
+                </li>
+                <li>
+                    <a href="{% url "manager:delete-wallet" %}">
+                        <div>Delete wallet</div>
+                    </a>
+                </li>
+            </ul>
         </div>
     </div>
 </div>

@@ -1,0 +1,45 @@
+{% extends 'dashboard/base.html' %}
+
+{% block content %}
+
+<div class="main">
+    <div class="wallet">
+        <h1>Hello {{ user.username }}!</h1>
+        
+        {% if form.errors %}
+        <div class="alert alert-danger">
+            <strong>{{ form.errors }}</strong>
+        </div>
+        {% endif %}
+
+        {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+
+        <div class="wallet-form">
+            <form class="w-form" method="post">
+                {% csrf_token %}
+                <h2>Update your wallet info here</h2>
+                <div class="wallet-form">
+                    <label for="currency">Currency:</label>
+                    {{ form.currencyType }}
+                </div>
+                <div class="wallet-form">
+                    <label for="income">Monthly Income:</label>
+                    {{ form.monthlyIncome }}
+                </div>
+                <div class="wallet-form">
+                    <label for="balance">Balance:</label>
+                    {{ form.balance }}
+                </div>
+                <button type="submit">Update wallet</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

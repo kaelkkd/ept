@@ -1,0 +1,7 @@
+Django==5.0.4
+django-environ==0.11.2
+django-jazzmin==2.6.1
+postgres==4.0
+psycopg2-binary==2.9.9
+sqlparse==0.5.0
+reportlab==4.2.0

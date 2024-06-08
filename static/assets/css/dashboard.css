@@ -258,11 +258,6 @@ img {
         height: 40px;
     }
 }
-/* 
-.wallet {
-    padding: 20px;
-    border-radius: 10px;
-} */
 
 .wallet {
     padding: 20px;
@@ -279,24 +274,52 @@ img {
     font-size: 20px;
 }
 
-.wallet-form {
+.wallet-form, .wallet-choices, .transaction-form {
     max-width: 500px;
     margin: 0 auto;
 }
 
-.wallet-form .form-group {
+.wallet-choices ul{
+    list-style: none;
+    align-items: center;
     margin-bottom: 20px;
 }
 
-.wallet-form label {
+.wallet-choices ul li{
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    text-align: center;
+    margin-bottom: 12px;
+}
+
+.wallet-choices ul li:hover{
+    background-color: var(--dark2);
+}
+
+.wallet-choices ul li a{
+    display: block;
+    color: #fff;
+    text-decoration: none;
+    padding: 22px;
+    font-size: 17px;
+}
+
+.wallet-form, .transaction-form {
+    margin-bottom: 1.5rem;
+    margin-top: 15px;
+    padding: 12px;
+}
+
+.wallet-form label, .transaction-form label {
     color: #fff;
     display: block;
     margin-bottom: 5px;
     font-weight: bold;
 }
 
-.wallet-form select,
-.wallet-form input {
+.wallet-form select, .wallet-form input,
+.transaction-form select, .transaction-form input {
     width: 100%;
     padding: 10px;
     border: 1px solid #ccc;
@@ -304,18 +327,139 @@ img {
     box-sizing: border-box;
 }
 
-.wallet-form button {
+.wallet-form button, .transaction-form button, wallet-canc-button {
     display: block;
     width: 100%;
     padding: 10px;
-    background-color: var(--dark2);
+    background-color: var(--dark6);
     color: #fff;
-    border: none;
+    border: 1px solid #ccc;
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s ease;
 }
 
-.wallet-form button:hover {
-    background-color: var(--dark3);
+.wallet-form button:hover, .transaction-form button:hover {
+    background-color: var(--dark2);
+}
+
+.wallet-form-cancel{
+    text-decoration: none;
+    color: #fff;
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: var(--dark);
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    text-align: center;
+    font-size: 14px;
+}
+
+.wallet-cancel:hover {
+    background-color: var(--dark2);
+}
+
+.wallet-choices h3, .transactions h3 {
+    color: #fff;
+}
+
+.wallet-form h2, .transaction-form h2{
+    color: #fff;
+    margin-bottom: 5px;
+}
+
+.transactions {
+    padding: 20px;
+    background-color: var(--dark6);
+}
+
+.transaction-redirect, .generate-statement {
+    margin-bottom: 20px;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    display: flex;
+    padding: 20px;
+    border-radius: 5px;
+    max-width: 400px;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    cursor: pointer;
+}
+
+.transaction-redirect a, .generate-statement a {
+    display: block;
+    color: #fff;
+    text-align: center;
+    text-decoration: none;
+}
+
+.transaction-redirect:hover, .generate-statement:hover {
+    background-color: var(--dark2);
+    transition: .4s;
+}
+
+.transactions-list {
+    background-color: var(--dark);
+    padding: 20px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    border-width: 1px;
+}
+
+.transactions-list p {
+    color: #fff;
+    margin: 0;
+}
+
+.transactions-list ul {
+    list-style: none;
+    padding: 0;
+}
+
+.transactions-list li {
+    position: relative;       /* Set relative positioning for the list item */
+    margin-bottom: 15px;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 10px;
+}
+
+.transactions-list .delete-transaction {
+    position: absolute;       /* Set absolute positioning for the delete button */
+    right: 0;                 /* Align the delete button to the right */
+    top: 50%;                 /* Center vertically within the list item */
+    transform: translateY(-50%);
+}
+
+.transactions-list li:last-child {
+    border-bottom: none;
+}
+
+.transactions-list li strong {
+    font-weight: bold;
+    margin-right: 5px;
+}
+
+.transactions-list h2 {
+    font-size: 24px;
+    margin-bottom: 15px;
+    color: #fff;
+}
+
+.transactions-list .transaction-del-btn {
+    background-color: red;    /* Example button styling */
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.transactions-list .transaction-del-btn:hover {
+    background-color: darkred;/* Example hover styling */
 }
