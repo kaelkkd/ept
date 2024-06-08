@@ -24,15 +24,15 @@
             <form class="w-form" method="post">
                 {% csrf_token %}
                 <h2>Insert your wallet info here</h2>
-                <div class="form-group">
+                <div class="wallet-form">
                     <label for="currency">Currency:</label>
                     {{ form.currency }}
                 </div>
-                <div class="form-group">
+                <div class="wallet-form">
                     <label for="income">Monthly Income:</label>
                     {{ form.income }}
                 </div>
-                <div class="form-group">
+                <div class="wallet-form">
                     <label for="balance">Balance:</label>
                     {{ form.balance }}
                 </div>
