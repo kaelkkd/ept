@@ -8,6 +8,11 @@
                 <div>Add a new transaction</div>
             </a>
         </div>
+        <div class="generate-statement">
+            <a href="{% url "manager:generate-statement" %}">
+                <div>Generate statement</div>
+            </a>
+        </div>
         <div class="transactions-list">
             {% if transactions %}
                 <h2>Transaction details</h2>
@@ -18,6 +23,12 @@
                             <p> <strong> Date: </strong> {{ transaction.date }} </p>
                             <p> <strong> Value: </strong> {{ transaction.value }} </p>
                             <p> <strong> Description: </strong> {{ transaction.description }} </p>
+                            <div class="delete-transaction">
+                                <form class="delete-transaction-form" action="{% url 'manager:delete-transaction' %}" data-transaction-id="{{ transaction.id }}" method="POST">
+                                    {% csrf_token %}
+                                    <button type="submit" class="transaction-del-btn">Remove</button>
+                                </form>
+                            </div>
                         </li>
                     {% endfor %}
                 </ul>
