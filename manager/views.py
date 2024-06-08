@@ -1,8 +1,12 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
+from django.views.decorators.http import require_POST
 from manager.forms import *
 from manager.models import Wallet, Transaction
 from django.contrib import messages
+from django.http import JsonResponse, FileResponse
+from reportlab.pdfgen import canvas
+from io import BytesIO
 # Create your views here.
 
 def index(request):
@@ -93,13 +97,40 @@ def addTransaction(request):
     return render(request, 'dashboard/add-transaction.html', context)
 
 @login_required(login_url='sign-in/')
+@require_POST
 def deleteTransaction(request):
-    if request.method == "POST":
-        transactionId = request.POST.get('transactionId')
-        transaction = Transaction.objects.get(pk = transactionId)
-        transaction.delete()
-        messages.success(request, f"Transaction sucessfully deleted.")
-        redirect ('dashboard/transactions.html')
+    transactionId = request.POST.get('transactionId')
+    if transactionId:
+        try:
+            transaction = Transaction.objects.get(pk=transactionId)
+            transaction.delete()
+            return JsonResponse({'success': True, 'message': 'Transaction successfully deleted.'})
+        except Transaction.DoesNotExist:
+            return JsonResponse({'success': False, 'message': 'Transaction does not exist.'})
+        
+    return JsonResponse({'success': False, 'message': 'Invalid request.'})
 
-    return render(request, 'dashboard/delete-transaction.html')
+@login_required(login_url='sign-in/')
+def generateStatement(request):
+    response = FileResponse(generateStatementFile(), as_attachment=True, filename='user_statement.pdf')
 
+    return response
+
+def generateStatementFile():
+    buffer = BytesIO()
+    file = canvas.Canvas(buffer)
+    transactions = Transaction.objects.all()
+    file.drawString(100, 750, "Transaction history")
+    y = 700
+
+    for transaction in transactions:
+        file.drawString(100, y, f"Value: {transaction.value}")
+        file.drawString(100, y - 20, f"Date: {transaction.date}")
+        file.drawString(100, y - 40, f"Description: {transaction.description}")
+        y -= 80
+
+    file.showPage()
+    file.save()
+    buffer.seek(0)
+
+    return buffer
