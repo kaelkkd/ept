@@ -20,16 +20,16 @@
         <div class="transaction-form">
             <form class="t-form" method="POST">
                 {% csrf_token %}
-                <h2>Insert the transaction info here</h2>
-                <div class="form-group">
+                <h2>Insert the transaction information</h2>
+                <div class="transaction-form">
                     <label for="value">Value:</label>
                     {{ form.value }}
                 </div>
-                <div class="form-group">
+                <div class="transaction-form">
                     <label for="description">Description:</label>
                     {{ form.description }}
                 </div>
-                <div class="form-group">
+                <div class="transaction-form">
                     <label for="date">Date:</label>
                     {{ form.date }}
                 </div>
