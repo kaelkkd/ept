@@ -274,7 +274,7 @@ img {
     font-size: 20px;
 }
 
-.wallet-form, .wallet-choices {
+.wallet-form, .wallet-choices, .transaction-form {
     max-width: 500px;
     margin: 0 auto;
 }
@@ -306,9 +306,9 @@ img {
 }
 
 .wallet-form, .transaction-form {
-    margin-bottom: 10px;
-    margin-top: 18px;
-    padding: 16px;
+    margin-bottom: 1.5rem;
+    margin-top: 15px;
+    padding: 12px;
 }
 
 .wallet-form label, .transaction-form label {
@@ -327,7 +327,7 @@ img {
     box-sizing: border-box;
 }
 
-.wallet-form button , .transaction-form button {
+.wallet-form button, .transaction-form button, wallet-canc-button {
     display: block;
     width: 100%;
     padding: 10px;
@@ -376,7 +376,7 @@ img {
     background-color: var(--dark6);
 }
 
-.transaction-redirect {
+.transaction-redirect, .generate-statement {
     margin-bottom: 20px;
     align-items: center;
     justify-content: center;
@@ -385,22 +385,23 @@ img {
     display: flex;
     padding: 20px;
     border-radius: 5px;
-    max-width: 500px;
+    max-width: 400px;
     text-align: center;
     margin-left: auto;
     margin-right: auto;
     cursor: pointer;
 }
 
-.transaction-redirect a {
+.transaction-redirect a, .generate-statement a {
     display: block;
     color: #fff;
     text-align: center;
     text-decoration: none;
 }
 
-.transaction-redirect:hover {
+.transaction-redirect:hover, .generate-statement:hover {
     background-color: var(--dark2);
+    transition: .4s;
 }
 
 .transactions-list {
@@ -413,6 +414,7 @@ img {
 
 .transactions-list p {
     color: #fff;
+    margin: 0;
 }
 
 .transactions-list ul {
@@ -421,9 +423,17 @@ img {
 }
 
 .transactions-list li {
+    position: relative;       /* Set relative positioning for the list item */
     margin-bottom: 15px;
     border-bottom: 1px solid #ddd;
     padding-bottom: 10px;
+}
+
+.transactions-list .delete-transaction {
+    position: absolute;       /* Set absolute positioning for the delete button */
+    right: 0;                 /* Align the delete button to the right */
+    top: 50%;                 /* Center vertically within the list item */
+    transform: translateY(-50%);
 }
 
 .transactions-list li:last-child {
@@ -439,4 +449,17 @@ img {
     font-size: 24px;
     margin-bottom: 15px;
     color: #fff;
+}
+
+.transactions-list .transaction-del-btn {
+    background-color: red;    /* Example button styling */
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.transactions-list .transaction-del-btn:hover {
+    background-color: darkred;/* Example hover styling */
 }
