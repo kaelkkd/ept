@@ -14,5 +14,6 @@ urlpatterns = [
     path("dashboard/update-wallet", views.updateWallet, name="update-wallet"),
     path("dashboard/delete-wallet", views.deleteWallet, name="delete-wallet"),
     path("dashboard/generate-statement", views.generateStatement, name="generate-statement"),
+    path("dashboard/help", views.help, name="help"),
 ]
 

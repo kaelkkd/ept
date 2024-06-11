@@ -134,3 +134,7 @@ def generateStatementFile():
     buffer.seek(0)
 
     return buffer
+
+@login_required(login_url='help/')
+def help(request):
+    return render(request, 'dashboard/help.html')
