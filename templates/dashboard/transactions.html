@@ -22,6 +22,7 @@
                             <p> <strong> ID: </strong> {{ transaction.id }} </p>
                             <p> <strong> Date: </strong> {{ transaction.date }} </p>
                             <p> <strong> Value: </strong> {{ transaction.value }} </p>
+                            <p> <strong> Category: </strong> {{ transaction.get_transactionCategory_display }} </p>
                             <p> <strong> Description: </strong> {{ transaction.description }} </p>
                             <div class="delete-transaction">
                                 <form class="delete-transaction-form" action="{% url 'manager:delete-transaction' %}" data-transaction-id="{{ transaction.id }}" method="POST">

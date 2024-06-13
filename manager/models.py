@@ -23,9 +23,17 @@ class Wallet(models.Model):
         return str(self.balance)
     
 class Transaction(models.Model):
+    TRANSACTION_CATEGORIES = (
+        (1, 'Rent'),
+        (2, 'Groceries'),
+        (3, 'Travel'),
+        (4, 'Bills'),
+        (5, 'Others'),
+    )
     wallet = models.ForeignKey('Wallet', on_delete=models.CASCADE, null=False)
     value = models.DecimalField(null=False, max_digits=10, decimal_places=2)
     date = models.DateField(default=timezone.now)
+    transactionCategory = models.IntegerField(choices=TRANSACTION_CATEGORIES, default=5)
     description = models.TextField(max_length=100)
     
 

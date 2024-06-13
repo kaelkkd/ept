@@ -15,9 +15,10 @@ class WalletUpdateForm(forms.ModelForm):
 class TransactionCreationForm(forms.Form):
     value = forms.DecimalField(max_digits=10, decimal_places=2)
     date = forms.DateField(widget=forms.TextInput(attrs={'type':'date'}))
+    category = forms.ChoiceField(choices=Transaction.TRANSACTION_CATEGORIES)
     description = forms.CharField(widget=forms.Textarea(attrs={'rows':3}))
 
 class TransactionEditForm(forms.ModelForm):
     class Meta:
         model = Transaction
-        fields = ['value', 'date', 'description']
+        fields = ['value', 'date', 'description', 'transactionCategory']
