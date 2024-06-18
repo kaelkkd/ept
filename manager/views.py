@@ -1,20 +1,74 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.http import require_POST
+from django.db.models import Sum
+from django.db.models.functions import TruncMonth
 from manager.forms import *
 from manager.models import Wallet, Transaction
 from django.contrib import messages
 from django.http import JsonResponse, FileResponse
+# from django.db.models import Sum
 from reportlab.pdfgen import canvas
+from datetime import datetime, timedelta
 from io import BytesIO
+import plotly.express as px
+import plotly.graph_objs as go
+from plotly.offline import plot
+from datetime import datetime
 # Create your views here.
 
 def index(request):
     return render(request, 'manager/index.html')
 
+def lineChart(wallet):
+    endDate = datetime.now()
+    startDate = endDate -timedelta(days=365)
+    months = [(startDate + timedelta(days=30 * i)).strftime('%Y-%m') for i in range(12)]
+    months = sorted(list(set(months)))
+    transactions = Transaction.objects.filter(wallet=wallet, date__range=[startDate, endDate]).order_by('date')
+    totalMonthTransactions = transactions.annotate(month=TruncMonth('date')).values('month').annotate(total=Sum('value')).order_by('month')
+    monthSumDict = {entry['month'].strftime('%Y-%m'): float(entry['total']) for entry in totalMonthTransactions}
+    labels = []
+    values = []
+
+    for month in months:
+        labels.append(month)
+        values.append(monthSumDict.get(month, 0.0))
+
+    lineFig = go.Figure(data=go.Scatter(x=labels, y=values, mode='lines+markers'))
+    lineFig.update_layout(title='Monthly Transaction Sum', xaxis_title='Month', yaxis_title='Total Transactions')
+    lineDiv = plot(lineFig, output_type='div')
+
+    return lineDiv
+
+def doughnutChart(wallet):
+    endDate = datetime.now()
+    currentMonth = endDate.month
+    currentYear = endDate.year
+    transactions = Transaction.objects.filter(wallet=wallet, date__month=currentMonth, date__year=currentYear)
+    categoriesSum = transactions.values('transactionCategory').annotate(total=Sum('value'))
+    categories  =[transaction.get_transactionCategory_display() for transaction in transactions]
+    values = [entry['total'] for entry in categoriesSum]
+
+    doughnutFig = go.Figure(data=[go.Pie(labels=categories, values=values, hole=0.4)])
+    doughnutFig.update_layout(title='Expenses by Category (Current Month)')
+    doughnutDiv = plot(doughnutFig, output_type='div')
+
+    return doughnutDiv
+
 @login_required(login_url='sign-in/')
 def dashboard(request):
-    return render(request, 'dashboard/dashboard.html')
+    user = request.user
+    wallet = Wallet.objects.get(owner=user)
+    chart1 = lineChart(wallet)
+    chart2 = doughnutChart(wallet)
+
+    context = {
+        'line_chart': chart1,
+        'doughnut_chart': chart2,
+    }
+
+    return render(request, 'dashboard/dashboard.html', context)
 
 @login_required(login_url='sign-in/')
 def transactions(request):
@@ -85,7 +139,7 @@ def addTransaction(request):
             usrWallet, created = Wallet.objects.get_or_create(owner= user)
             if created:
                 messages.warning(request, f"A new wallet was created.")
-            transaction = Transaction(wallet=usrWallet, value=data['value'], date=data['date'], description=data['description'])
+            transaction = Transaction(wallet=usrWallet, value=data['value'], date=data['date'], transactionCategory=data['category'], description=data['description'])
             transaction.save()
             messages.success(request, f"Transaction sucessfully added.")
             redirect('dashboard/transaction.html')
@@ -126,8 +180,9 @@ def generateStatementFile():
     for transaction in transactions:
         file.drawString(100, y, f"Value: {transaction.value}")
         file.drawString(100, y - 20, f"Date: {transaction.date}")
-        file.drawString(100, y - 40, f"Description: {transaction.description}")
-        y -= 80
+        file.drawString(100, y - 40, f"Category: {transaction.get_transactionCategory_display}")
+        file.drawString(100, y - 60, f"Description: {transaction.description}")
+        y -= 120
 
     file.showPage()
     file.save()
@@ -135,6 +190,55 @@ def generateStatementFile():
 
     return buffer
 
-@login_required(login_url='help/')
+@login_required(login_url='sign-in/')
 def help(request):
     return render(request, 'dashboard/help.html')
+
+# @login_required(login_url='sign-in/')
+# def getTransactionData(request):
+#     transactions = Transaction.objects.all()
+#     data = {'date':[transaction.date.strftime('%Y-%m-%d') for transaction in transactions],
+#             'values':[transaction.value for transaction in transactions],
+#             'category':[transaction.get_transactionCategory_display() for transaction in transactions]}
+    
+#     return JsonResponse(data)
+
+# @login_required(login_url='sign-in/')
+# def getUserBalanceVariation(request):
+#     user = request.user
+#     wallet = Wallet.objects.get(owner=user)
+#     transactions = Transaction.objects.filter(wallet=wallet).order_by('date')
+    
+#     # Create a dictionary for monthly balances
+#     monthlyBalances = {}
+    
+#     # Initialize the current balance
+#     currentBalance = float(wallet.balance)
+    
+#     # Get the current date and one year ago date
+#     today = datetime.today()
+#     one_year_ago = today - timedelta(days=365)
+    
+#     # Iterate through all months in the past year
+#     for i in range(12):
+#         month = (today - timedelta(days=i*30)).strftime('%Y-%m')
+#         monthlyBalances[month] = 0
+
+#     # Update the monthly balances with actual transaction data
+#     for transaction in transactions:
+#         month = transaction.date.strftime('%Y-%m')
+#         if month in monthlyBalances:
+#             monthlyBalances[month] += float(transaction.value)
+    
+#     # Generate ordered list of months and balance data
+#     orderedMonths = sorted(monthlyBalances.keys())
+#     labels = []
+#     balances = []
+    
+#     for month in orderedMonths:
+#         labels.append(month)
+#         currentBalance += monthlyBalances[month]
+#         balances.append(currentBalance)
+    
+#     responseData = {'labels': labels, 'values': balances}
+#     return JsonResponse(responseData)

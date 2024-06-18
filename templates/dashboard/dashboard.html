@@ -1,4 +1,5 @@
 {% extends 'dashboard/base.html' %}
+{% load static %}
 
 {% block content %}
 
@@ -45,16 +46,20 @@
         <div class="chart">
             <h2>Earnings (past 12 months)</h2>
             <div>
-                <canvas id="lineChart"></canvas>
+                {% comment %} <canvas id="lineChart"></canvas> {% endcomment %}
+                {{ line_chart|safe }}
             </div>
         </div>
         <div class="chart doughnut-chart">
-            <h2>Employees</h2>
+            <h2>Expenses</h2>
             <div>
-                <canvas id="doughnut"></canvas>
+                {% comment %} <canvas id="doughnut"></canvas> {% endcomment %}
+                {{ doughnut_chart|safe }}
             </div>
         </div>
     </div>
 </div>
 
 {% endblock %}
+
+
